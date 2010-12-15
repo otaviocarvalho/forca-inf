@@ -1,9 +1,30 @@
-Deploying no AppEngine
+=== Deploying ForCA on Google AppEngine ===
 
-1. Clone o repositório
-2. Cadastre-se no AppEngine e crie uma application lá
-3. Baixe o último SDK do Google AppEngine
-4. Edite o arquivo app.yaml na raiz do repositório, modificando a primeira
-   linha ("application:") com o nome do seu app do GAE
-5. python appcfg.py update <diretorio_do_ForCA>
+1. git clone git://github.com/trsilva/forca-inf.git
+2. Subscribe to Google AppEngine and create an application
+3. Download the latest AppEngine SDK
+4. Edit the first line of app.yaml with the name of your created app
+5. python appcfg.py update <cloned_forca-inf_directory>
 6. Profit!
+
+.
+
+=== About data fixtures ===
+
+To add your own prepopulation (teachers, subjects, etc) edit the files in
+applications/ForCA/models/xtures with the desired data.
+(Trust me, this *IS* the best way to prepopulate on GAE)
+
+.
+
+== About pictures ===
+
+The teachers' default pictures are *NOT* stored in the database. They are
+stored in the applications/ForCA/static/profs directory.
+When showing the picture, the view checks if the field 'picture' for that
+given techer is empty in the database. If it is, then the default picture
+is shown instead.
+A little gotcha: by default, the system expects all files in this directory
+to be .jpg . Also, the name of the file must match the first part of the
+teacher's e-mail (everything before the '@').
+You can fiz all this mess my editing the prof/home view.
